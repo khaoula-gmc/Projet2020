@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+
 import {
   Collapse,
   Navbar,
@@ -7,13 +9,43 @@ import {
   Nav,
   NavItem,
   NavLink,
-  NavbarText
-} from 'reactstrap';
+  ButtonDropdown, 
+  DropdownToggle, 
+  DropdownMenu, 
+  DropdownItem
+} from 'reactstrap'
+import { loggedOut } from '../actions';
+
+
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [dropDownOpen, setDropDownOpen] = useState(false);
+
+  const auth = useSelector(state => state.auth)
+
+  const dispatch = useDispatch()
+
+  const logOut = () => {
+    dispatch(loggedOut())
+  }
 
   const toggle = () => setIsOpen(!isOpen);
+
+  const toggleButton = () => setDropDownOpen(!dropDownOpen);
+
+  const renderLoginOrLgout = () => {
+    if(auth.isAuth) return(
+      <ButtonDropdown isOpen={dropDownOpen} toggle={toggleButton}>
+        <DropdownToggle caret color="primary" size="sm">Welcome</DropdownToggle>
+        <DropdownMenu>
+          <DropdownItem onClick={logOut} >Se deconnecter</DropdownItem>
+        </DropdownMenu>
+      </ButtonDropdown>
+    )
+
+    return <NavLink style={{color: '#fff'}} href="/login">Se connecter</NavLink>
+  }
 
   return (
     <div>
@@ -35,10 +67,7 @@ const NavBar = (props) => {
               <NavLink href="/service">Services</NavLink>
             </NavItem>
           </Nav>
-          <NavLink style={{color: '#fff'}} href="/login">Login</NavLink>
-          
-          
-          
+          {renderLoginOrLgout()}
         </Collapse>
       </Navbar>
     </div>
