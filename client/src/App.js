@@ -2,7 +2,7 @@ import React from 'react';
 import {Route} from 'react-router-dom'
 
 import {NavBar} from './components'
-import {Home,Login, Produit, Moe, Service} from './pages'
+import {Home,Login, Produit, Moe, Service, SignUp} from './pages'
 import './App.css';
 
 function App() {
@@ -10,7 +10,8 @@ function App() {
     <div className="App">
       <NavBar/>
       <Route path='/' component={Home} exact />
-      <Route path='/login' component={Login} exact />
+      <Route path='/signup' component={SignUp} />
+      <Route path='/login' component={Login} />
       <Route path='/moe' component={Moe} exact />
       <Route path='/produit' component={Produit} exact />
       <Route path='/service' component={Service} exact />

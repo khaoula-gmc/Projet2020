@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const logger = require('morgan');
 const bodyParser = require('body-parser')
 const passport = require('passport');
+const cors = require('cors');
 
 const routes = require("./routes/routes");
 
@@ -23,6 +24,8 @@ mongoose.connection.on("error", (err) => {
 
 // Middelware
 app.use(logger('dev'));
+
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));

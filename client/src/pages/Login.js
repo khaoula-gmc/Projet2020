@@ -1,22 +1,45 @@
 import React from 'react'
-import {Formik, yupToFormErrors, validateYupSchema} from 'formik'
+import {Link, useHistory} from 'react-router-dom'
+import {useDispatch, useSelector} from 'react-redux'
+import { Button, FormGroup, Label, Input, FormFeedback, Alert } from 'reactstrap'
+
 import * as Yup from 'yup'
-import { Button, FormGroup, Label, Input, FormFeedback } from 'reactstrap';
+import {Formik} from 'formik'
+
+import {signIn} from '../actions'
 
 function Login() {
-    const handleFormSubmit=(values)=>{
-            console.log(values)
+    const dispatch = useDispatch();
+    const auth = useSelector(state => state.auth);
+    let history = useHistory();
+
+    const handleFormSubmit = (values, bag) => {
+        dispatch(signIn(values));
+        bag.setSubmitting(false);
+    };
+    
+    if(auth.isAuth) {
+        history.push("/");
     }
+
+    const errorLogin = () => {
+        if(auth.error)
+            return <Alert color="danger">{auth.error}</Alert>
+    }
+
     return (
         <div style={{padding:20}}>
-           <h3>Se Connecter</h3> 
-           <hr/>
-           <Formik
-                initialValues={{email:"", password:""}}
-                onSubmit={handleFormSubmit} 
-                validationSchema={Yup.object().shape({
+            <h3>Se connecter</h3> 
+            <hr/>
+
+            {errorLogin()}
+
+            <Formik
+                initialValues={{ email: "", password: "" }}
+                onSubmit = {handleFormSubmit} 
+                validationSchema = {Yup.object().shape({
                     email:Yup
-                        .string()//we can add errors here
+                        .string() //we can add errors here
                         .email()
                         .required(),
                     password:Yup
@@ -24,45 +47,53 @@ function Login() {
                         .min(6)
                         .required()
                 })}
-                render={({
-                    handleChange,
-                    handleSubmit,
-                    isValid,
-                    isSubmitting,
-                    handleBlur,
-                    errors,
-                    touched
-                })=>(
-                    <div>
-                        <FormGroup>
-                            <Label for="Email">E-mail</Label>
-                            <Input type="email" 
-                                   name="email" 
-                                   id="Email" 
-                                   invalid={errors.email&&touched.email}
-                                   placeholder="e-mail" 
-                                   onChange={handleChange}
-                                   onBlur={handleBlur}/>
-                            {errors.email&&touched.email?<FormFeedback>{errors.email}</FormFeedback>:null}
-                        </FormGroup>
-                        <FormGroup>
-                            <Label for="Password">Password</Label>
-                            <Input type="password" 
-                                   name="password" 
-                                   id="Password" 
-                                   invalid={errors.password&&touched.password}
-                                   placeholder="password" 
-                                   onChange={handleChange}
-                                   onBlur={handleBlur}/>
-                            {errors.password&&touched.password?<FormFeedback>{errors.password}</FormFeedback>:null}
-                        </FormGroup>
-                        <Button color='primary' block onClick={handleSubmit} disabled={!isValid||isSubmitting}>Submit</Button>
-                    </div>
-                )}
-           />
+            >           
+                    {({
+                        handleChange,
+                        handleSubmit,
+                        isValid,
+                        isSubmitting,
+                        handleBlur,
+                        errors,
+                        touched
+                    }) => (
+                        <div>
+                            <FormGroup>
+                                <Label for = "Email">E-mail</Label>
+                                <Input 
+                                    valid = {!isValid.email && touched.email}
+                                    type = "email" 
+                                    name = "email" 
+                                    id = "Email" 
+                                    invalid = {errors.email && touched.email}
+                                    placeholder = "e-mail" 
+                                    onChange = {handleChange}
+                                    onBlur = {handleBlur}
+                                />
+                                {errors.email && touched.email ? <FormFeedback>{errors.email}</FormFeedback> : null}
+                            </FormGroup>
 
-                
-            
+                            <FormGroup>
+                                <Label for = "Password">Password</Label>
+                                <Input 
+                                    valid = {!isValid.password && touched.password}
+                                    type = "password" 
+                                    name = "password" 
+                                    id = "Password" 
+                                    invalid = {errors.password && touched.password}
+                                    placeholder = "password" 
+                                    onChange = {handleChange}
+                                    onBlur = {handleBlur}
+                                />
+                                {errors.password && touched.password ? <FormFeedback>{errors.password}</FormFeedback> : null}
+                            </FormGroup>
+
+                            <Button color = 'primary' block onClick = {handleSubmit} disabled={!isValid || isSubmitting}>Se connecter</Button>
+                        </div>
+                    )}
+                </Formik>
+
+            <Link to="/signup"> Pas de Compte? Créer un compte maintenant</Link>
         </div>
     )
 }
