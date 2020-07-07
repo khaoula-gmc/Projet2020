@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
+import {Link} from 'react-router-dom'
 
 import {
   Collapse,
@@ -39,6 +40,10 @@ const NavBar = (props) => {
       <ButtonDropdown isOpen={dropDownOpen} toggle={toggleButton}>
         <DropdownToggle caret color="primary" size="sm">Welcome {auth.profile.nom}</DropdownToggle>
         <DropdownMenu size="sm">
+          <Link to="/profil"><DropdownItem >Profil</DropdownItem></Link>
+          <Link to="/mes-produits"><DropdownItem >Mes produits</DropdownItem></Link>
+          <Link to="/mes-services"><DropdownItem >Mes services</DropdownItem></Link>
+          <hr/>
           <DropdownItem onClick={logOut} >Se deconnecter</DropdownItem>
         </DropdownMenu>
       </ButtonDropdown>

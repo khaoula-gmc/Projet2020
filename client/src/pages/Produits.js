@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Service() {
+function Produits() {
     return (
         <div>
-            services
+           produits 
         </div>
     )
 }
 
-export {Service}
+export { Produits }

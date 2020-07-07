@@ -3,3 +3,6 @@ export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAILED = 'AUTH_FAILED';
 export const LOGGED_OUT = 'LOGGED_OUT';
 export const GET_PROFILE = 'GET_PROFILE';
+
+export const GET_ALL_MOE_SUCCESS = 'GET_ALL_MOE_SUCESS';
+export const GET_ALL_MOE_FAILED = 'GET_ALL_MOE_FAILED';

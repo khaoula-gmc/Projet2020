@@ -8,3 +8,7 @@ export const apiLogin = (request_data) => {
 export const getProfile = (token) => {
     return axios.get('/api/routes/profile')
 }
+
+export const apiGetAllMoe = () =>{
+    return axios.get('/api/routes/moe')
+}

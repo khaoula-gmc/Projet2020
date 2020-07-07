@@ -6,7 +6,7 @@ const TOKEN_NAME = 'moe_app_token'
 
 const success = (token) => {
     localStorage.setItem(TOKEN_NAME, token)
-    return { type: AUTH_SUCCESS};
+    return { type: AUTH_SUCCESS };
 }
 
 const error = (err) => {
@@ -35,8 +35,8 @@ export const onLoading = () => {
                 return dispatch(error('Veuillez vous connecter'));
             }
             setAuthHeader(token)
+            dispatch(tokenProfile())
             dispatch(success(token));
-
         } catch (err) {
             console.log(err);
         }
