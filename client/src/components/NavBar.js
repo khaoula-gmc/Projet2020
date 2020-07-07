@@ -37,8 +37,8 @@ const NavBar = (props) => {
   const renderLoginOrLgout = () => {
     if(auth.isAuth) return(
       <ButtonDropdown isOpen={dropDownOpen} toggle={toggleButton}>
-        <DropdownToggle caret color="primary" size="sm">Welcome</DropdownToggle>
-        <DropdownMenu>
+        <DropdownToggle caret color="primary" size="sm">Welcome {auth.profile.nom}</DropdownToggle>
+        <DropdownMenu size="sm">
           <DropdownItem onClick={logOut} >Se deconnecter</DropdownItem>
         </DropdownMenu>
       </ButtonDropdown>
@@ -61,10 +61,10 @@ const NavBar = (props) => {
               <NavLink href="/moe">MOES</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/produit">Produits</NavLink>
+              <NavLink href="/produits">Produits</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/service">Services</NavLink>
+              <NavLink href="/services">Services</NavLink>
             </NavItem>
           </Nav>
           {renderLoginOrLgout()}
