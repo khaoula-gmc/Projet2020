@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Produit() {
+function MoeProduits() {
     return (
         <div>
-           produit 
+            mes produits
         </div>
     )
 }
 
-export { Produit }
+export { MoeProduits }

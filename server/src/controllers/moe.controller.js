@@ -80,7 +80,7 @@ moeController.login = async(req, res, next) => {
 moeController.get = async(req, res, next) => {
     try {
         const getAll = await Moe.find()
-        res.json({ getAll })
+        res.send({ getAll })
     } catch (err) {
         next(err);   
     }
@@ -88,9 +88,9 @@ moeController.get = async(req, res, next) => {
 
 //Get profile
 moeController.getProfile = async(req,res,next) => {
+    const {moe} = req
     return res.send({ 
-        message: "You are authenticated",
-        moe: req.moe
+        moe
     });
 }
 
