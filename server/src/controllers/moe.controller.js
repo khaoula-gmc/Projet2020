@@ -80,11 +80,7 @@ moeController.login = async(req, res, next) => {
 moeController.get = async(req, res, next) => {
     try {
         const getAll = await Moe.find()
-<<<<<<< HEAD
         res.res( {getAll} )
-=======
-        res.send({ getAll })
->>>>>>> f4ae9cf190a53d6671716c09632af9b9af0a40d1
     } catch (err) {
         next(err);   
     }

@@ -1,15 +1,14 @@
-import {GET_ALL_MOE_SUCCESS, GET_ALL_MOE_FAILED} from './types'
+import {GET_ALL_MOE_SUCCESS, GET_ALL_MOE_FAILED, GET_ALL_MOE_ATTEMPTING} from './types'
 import {apiGetAllMoe} from '../api/moe.api'
 
 export const getAllMoes = () => {
-    return async dispatch => {
+    return async dispatch => {  
+        dispatch({ type: GET_ALL_MOE_ATTEMPTING })
         try {
-            const {data: {moes}} = await apiGetAllMoe()
-            dispatch({type: GET_ALL_MOE_SUCCESS, payload: moes })
+            const {data: { getAll }} = await apiGetAllMoe()
+            dispatch({ type: GET_ALL_MOE_SUCCESS, payload: getAll })
         } catch (err) {
-            console.log(err)
-            // const { response: { data } } = err
-            // dispatch({type: GET_ALL_MOE_FAILED, payload: data.error })
+            dispatch({ type: GET_ALL_MOE_FAILED })
         }
     }
 }
