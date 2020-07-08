@@ -18,7 +18,7 @@ export const signIn = request_data => {
             const { data: { token } } = await apiLogin(request_data)
             dispatch(success(token))
         } catch (err) {
-            const { response: { data } } = err
+            const { response: { data }} = err
             dispatch(error(data.error))
         }
     }
