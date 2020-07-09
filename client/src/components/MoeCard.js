@@ -4,31 +4,31 @@ import {
     CardText,
     CardBody, 
     CardTitle, 
-    CardSubtitle
   } from 'reactstrap';
 
 
 
-function MoeCard({ el }) {
+const MoeCard = ({ el }) => {
     return (
         <div>
-            <Card style={{margin: 20}}>
+            <Card className="card-MoeCard" >
                 <CardBody>
-                    <CardTitle>Société: {el.nom_societe} </CardTitle>
-                    <CardSubtitle>Nom: {el.nom} {el.prenom} </CardSubtitle>
+                    <CardTitle><span>Société:</span> {el.nom_societe} </CardTitle>
+                    <CardText><span>Nom:</span> {el.nom} {el.prenom} </CardText>
                 </CardBody>
-                {<img  
-                    style={{width: "7em", height: "8em", margin: "2em"}}
-                    src="https://urlz.fr/dqyn" 
-                    alt="Card No Image" />}
+                {<img
+                    className="image-MoeCard" 
+                    src="https://cutt.ly/ro9aWyC"
+                    alt="No img profile" 
+                />}
                 <CardBody>
-                    <CardText>Adresse: {el.adresse} </CardText>
-                    <CardText>Activité: {el.activite} </CardText>
-                    <CardText>Description: {el.description} </CardText> 
+                    <CardText><span>Adresse:</span> {el.adresse} </CardText>
+                    <CardText><span>Activité:</span> {el.activite} </CardText>
+                    <CardText><span>Description:</span> {el.description} </CardText> 
                 </CardBody>
             </Card>
         </div>
     )
 }
 
-export default MoeCard
+export { MoeCard }

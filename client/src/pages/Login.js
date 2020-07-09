@@ -1,12 +1,12 @@
 import React from 'react'
-import {Link, useHistory} from 'react-router-dom'
-import {useDispatch, useSelector} from 'react-redux'
+import { Link, useHistory } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { Button, FormGroup, Label, Input, FormFeedback, Alert } from 'reactstrap'
 
 import * as Yup from 'yup'
-import {Formik} from 'formik'
+import { Formik } from 'formik'
 
-import {signIn} from '../actions'
+import { signIn } from '../actions'
 
 function Login() {
     const dispatch = useDispatch();
@@ -19,7 +19,7 @@ function Login() {
     };
     
     if(auth.isAuth) {
-        history.push("/");
+        history.push("/")
     }
 
     const errorLogin = () => {

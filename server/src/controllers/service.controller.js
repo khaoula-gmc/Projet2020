@@ -41,11 +41,13 @@ serviceController.create = async (req, res, next) => {
 
     const {
         nom,
+        type,
         description,
     } = req.body;
 
     const newService = new Service({
         nom,
+        type,
         description,
         owner: moe
     }); 

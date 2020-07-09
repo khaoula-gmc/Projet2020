@@ -1,18 +1,17 @@
 import React, {useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 
-import { getAllMoes } from '../actions/moe.action'
-import MoeCard from '../components/MoeCard'
+import { getAllMoes } from '../actions'
+import { MoeCard } from '../components'
 
 
 
-function Moe() {
-    const moes = useSelector(state => state.moes)
+function Moes() {
+    const moes = useSelector(state=>state.moes)
 
     const dispatch = useDispatch();
-
     useEffect(() => {
-        dispatch(getAllMoes());
+     dispatch(getAllMoes());
     }, [])
 
     return (
@@ -24,4 +23,4 @@ function Moe() {
     )
 }
 
-export {Moe} 
+export {Moes} 
