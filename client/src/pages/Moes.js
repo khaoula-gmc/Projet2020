@@ -41,7 +41,7 @@ function Moes() {
             inputOpen={inputOpen} 
             setInputValue={setInputValue} 
         />
-
+        <hr/>
         <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}} >
             {onSearch(moes.moes).map(el => (
                 <MoeCard el={el} key={el._id} />   
