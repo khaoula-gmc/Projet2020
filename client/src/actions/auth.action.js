@@ -1,5 +1,15 @@
-import { AUTH_ATTEMPTING, AUTH_SUCCESS, AUTH_FAILED, LOGGED_OUT, GET_PROFILE } from './types'
-import { apiLogin, getProfile } from '../api/moe.api'
+import { 
+    AUTH_ATTEMPTING, 
+    AUTH_SUCCESS, 
+    AUTH_FAILED, 
+    LOGGED_OUT, 
+    GET_PROFILE, 
+    SIGNUP_SUCCESS,
+    DELETE_MOE,
+    UPDATE_MOE,
+    RESET
+} from './types'
+import { apiLogin, getProfile, apiSignUp, apiDelete, apiUpdate } from '../api/moe.api'
 import setAuthHeader from '../api/setAuthHeader.api'
 
 const TOKEN_NAME = 'moe_app_token'
@@ -12,6 +22,20 @@ const success = (token) => {
 const error = (err) => {
     return { type: AUTH_FAILED, payload: err};
 }
+
+export const signUp = request_data => {
+    return async dispatch => {
+      try {
+        await apiSignUp(request_data);
+        dispatch({ type: SIGNUP_SUCCESS });
+      } catch (err) {
+        const {
+          response: { data },
+        } = err;
+        dispatch(error(data.error));
+      }
+    };
+  };
 export const signIn = request_data => {
     return async dispatch => {
         dispatch({ type: AUTH_ATTEMPTING});
@@ -45,9 +69,9 @@ export const onLoading = () => {
 
 export const loggedOut = () => {
     localStorage.clear();
+    setAuthHeader(null);
     return ({ type: LOGGED_OUT })
 }
-
 
 export const tokenProfile = () => {
     return async dispatch => {
@@ -60,3 +84,32 @@ export const tokenProfile = () => {
     }
 
 }
+
+export const deleteMoe = (_id) => {
+    return async dispatch => {
+        try {
+            dispatch({ type: DELETE_MOE })
+            await apiDelete(_id)
+            dispatch(loggedOut())
+        } catch (err) {
+            console.log(err);
+        }
+      };
+}
+
+export const updateMoe = (moe) => {
+    return async dispatch => {
+        try {
+          await apiUpdate(moe)
+          dispatch({ type: UPDATE_MOE })
+          dispatch(tokenProfile())
+        } catch (err) {
+          console.log(err);
+        }
+      };
+}
+
+export const reset = () => {
+    return ({ type: RESET })
+}
+

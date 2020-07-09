@@ -3,34 +3,45 @@ import { useHistory, useLocation } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { MoeForm } from '../components'
-import { signUp } from '../actions'
+import { updateMoe, reset } from '../actions'
 
-const SignUp = () => {
+const EditMoe = () => {
     const dispatch = useDispatch()
     const auth = useSelector(state => state.auth)
 
     let location = useLocation();
     let history = useHistory()
     
-    console.log(location)
+    let moe;
 
-    if(auth.isSignUp) {
-        history.push('/login')
+    try {
+        moe = location.state
+    } catch (err) {
+        moe = undefined
+    }
+
+    if(auth.isUpdate) {
+        history.push('/')
+        dispatch(reset())
     }
     
     const handleFormSubmit = (values, bag) => {
-        dispatch(signUp(values));
+        moe = location.state
+        values._id = moe._id
+        dispatch(updateMoe(values))
         bag.setSubmitting(false)
+        console.log(moe)
     }
     
     return (
         <MoeForm 
-        buttonText="S'inscrire"
+        buttonText="Enregistrer votre modification"
+        moe={moe}
         onSubmit={handleFormSubmit}
         error={auth.error}
-        titleText="Créer un compte"
+        titleText="Modifier mon profil"
         />
     )
 }
 
-export {SignUp}
+export {EditMoe}

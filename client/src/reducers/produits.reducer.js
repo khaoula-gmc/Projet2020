@@ -1,24 +1,24 @@
 import { 
-    GET_ALL_MOE_SUCCESS, 
-    GET_ALL_MOE_FAILED, 
-    GET_ALL_MOE_ATTEMPTING,
+    GET_ALL_PRODUITS_SUCCESS, 
+    GET_ALL_PRODUITS_FAILED, 
+    GET_ALL_PRODUITS_ATTEMPTING,
 } from "../actions/types"
 
 const initialState = {
     attempting: false,
-    moes: []
+    produits: []
 }
 
 export default (state = initialState, action) => {
     switch (action.type) {
 
-        case GET_ALL_MOE_ATTEMPTING:
+        case GET_ALL_PRODUITS_ATTEMPTING:
             return { ...state, attempting: true }
 
-        case GET_ALL_MOE_SUCCESS:
-            return { ...state, attempting: true, moes: action.payload }
+        case GET_ALL_PRODUITS_SUCCESS:
+            return { ...state, attempting: true, produits: action.payload }
 
-        case GET_ALL_MOE_FAILED:
+        case GET_ALL_PRODUITS_FAILED:
             return {...state, attempting: false}
     
         default:

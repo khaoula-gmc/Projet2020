@@ -12,6 +12,7 @@ moeController.register = async(req, res, next) => {
         prenom,
         nom_societe,
         adresse,
+        telephone,
         activite,
         desription,
         date_inscription
@@ -24,6 +25,7 @@ moeController.register = async(req, res, next) => {
         prenom,
         nom_societe,
         adresse,
+        telephone,
         activite,
         desription,
         date_inscription
@@ -31,7 +33,7 @@ moeController.register = async(req, res, next) => {
 
     try {
         const moe = await newMoe.save();
-        return res.send({ moe });
+        return res.send({ moe: moe });
     } catch (err) {
         if(err.code === 11000 && err.name === "MongoError"){
             let error = new Error(`Email (${newMoe.email}) is already taken`)
@@ -99,12 +101,13 @@ moeController.update = async (req, res, next) => {
     const { _id } = req.params;
    
     try {
-        await Moe.findOneAndUpdate(
+        const moeUpdated = await Moe.updateMany(
             { _id }, 
             { $set: req.body }
         )
         return res.send({
-            message: "Moe modifié"
+            message: "Moe modifié",
+            moeUpdated
         })
     } catch (err) {
         next(err);

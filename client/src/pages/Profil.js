@@ -1,31 +1,49 @@
 import React from 'react'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
+import {Link} from 'react-router-dom'
 import {
     Card, 
     CardText,
     CardBody, 
-    CardLink,
-    CardTitle, 
-    CardSubtitle
-  } from 'reactstrap';
+    CardTitle 
+  } from 'reactstrap'
+
+  import {deleteMoe} from '../actions'
 
 function Profil() {
-
+    const dispatch = useDispatch()
     const auth = useSelector(state => state.auth)
+
+    const onDelete = () => {
+        if(window.confirm("Voulez-vous vraiment supprimer votre compte?")) {
+            const moeId = auth.profile._id
+            dispatch((deleteMoe(moeId)))
+        } 
+    }
+   
     return (
-        <div>
-           <Card>
+        <div className="card-Profile">
+           <Card style={{padding: 10}}>
+                {<img
+                    className="image-MoeCard" 
+                    src="https://cutt.ly/ro9aWyC"
+                    alt="No img profile" 
+                />}
                 <CardBody>
-                    <CardTitle>Société: {auth.profile.nom_societe}</CardTitle>
-                    <CardSubtitle>Nom: {auth.profile.prenom} {auth.profile.nom}</CardSubtitle>
-                </CardBody>
-                {/* <img width="100%" src="/assets/318x180.svg" alt="Card image cap" /> */}
-                <CardBody>
-                    <CardText>Adresse: {auth.profile.adresse}</CardText>
-                    <CardText>Activité: {auth.profile.activite}</CardText>
-                    <CardText>Description: {auth.profile.description}</CardText>
-                    <CardLink href="#">Modifier profil</CardLink>
-                    <CardLink href="#">Se désinscrire</CardLink>
+                    <CardTitle><span>Société:</span> {auth.profile.nom_societe}</CardTitle>
+                    <CardText><span>Nom:</span> {auth.profile.prenom} {auth.profile.nom}</CardText>
+                    <CardText><span>Description:</span> {auth.profile.telephone}</CardText>
+                    <CardText><span>Adresse:</span> {auth.profile.adresse}</CardText>
+                    <CardText><span>Activité:</span> {auth.profile.activite}</CardText>
+                    <CardText><span>Description:</span> {auth.profile.description}</CardText>
+                    <Link 
+                        to={{ pathname: "/edit-moe", state: {...auth.profile} }}
+                        className="btn btn-secondary btn-sm m-1"
+                    >Modifier profil</Link>
+                    <Link 
+                        to="#" onClick={onDelete} 
+                        className="btn btn-secondary btn-sm m-1"
+                    >Se désinscrire</Link>
                 </CardBody>
             </Card>
         </div>

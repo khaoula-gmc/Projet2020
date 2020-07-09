@@ -1,0 +1,50 @@
+/* span */
+
+span {
+    font-weight: 800;
+}
+
+/* MOE-Card */
+
+.card-MoeCard {
+    margin: 20px;
+    width: 16em; 
+    text-align: center;
+}
+
+.image-MoeCard {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 8em;
+    height: 9em;
+}
+
+/* Profile moe*/
+
+.card-Profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px;
+}
+
+/* Search */
+
+.search-container {
+    margin: 40px 0px;
+    display: flex;
+    justify-content: center;
+  }
+  .search-container input {
+    width: 60%;
+    border-radius: 25px;
+    border: 1px solid rgb(0, 123, 255);
+    color: grey;
+    padding: 8px 0 8px 10px;
+    margin-right: 10px;
+  }
+  .search-container input:focus {
+    outline: 0;
+  }
