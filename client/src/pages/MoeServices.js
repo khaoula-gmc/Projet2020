@@ -1,11 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector,useDispatch } from 'react-redux'
 
-function MoeServices() {
+import { getService } from '../actions/moeServices.action'
+import { MoeServiceCard } from '../components'
+
+import { SaveService } from '../components'
+
+const MoeServices = () => {
+    const moeServices = useSelector(state => state.moeServices)
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+     dispatch(getService(moeServices));
+    }, [])
+
     return (
         <div>
-            mes services
+            <SaveService />
+            <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}} >
+                {moeServices.moeServices.map(el => (
+                    <MoeServiceCard el={el} key={el._id} />   
+                ))}
+            </div>
         </div>
     )
 }
 
-export { MoeServices } 
+export {MoeServices} 
