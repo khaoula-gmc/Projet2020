@@ -30,7 +30,6 @@ const EditMoe = () => {
         values._id = moe._id
         dispatch(updateMoe(values))
         bag.setSubmitting(false)
-        console.log(moe)
     }
     
     return (

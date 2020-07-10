@@ -5,7 +5,8 @@ import moes from '../reducers/moe.reducer'
 import errors from '../reducers/errors.reducer'
 import produits from '../reducers/produits.reducer'
 import services from '../reducers/services.reducer'
+import moeProduits from '../reducers/moeProduit.reducer'
 
 export default combineReducers({
-    auth, moes, errors, produits, services
+    auth, moes, errors, produits, services, moeProduits
 });

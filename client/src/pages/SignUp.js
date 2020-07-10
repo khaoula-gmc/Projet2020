@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { MoeForm } from '../components'
@@ -9,11 +9,8 @@ const SignUp = () => {
     const dispatch = useDispatch()
     const auth = useSelector(state => state.auth)
 
-    let location = useLocation();
     let history = useHistory()
     
-    console.log(location)
-
     if(auth.isSignUp) {
         history.push('/login')
     }
@@ -25,10 +22,10 @@ const SignUp = () => {
     
     return (
         <MoeForm 
-        buttonText="S'inscrire"
-        onSubmit={handleFormSubmit}
-        error={auth.error}
-        titleText="Créer un compte"
+            buttonText="S'inscrire"
+            onSubmit={handleFormSubmit}
+            error={auth.error}
+            titleText="Créer un compte"
         />
     )
 }

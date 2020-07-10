@@ -1,6 +1,6 @@
 import React from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {Link} from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import {
     Card, 
     CardText,
@@ -8,7 +8,7 @@ import {
     CardTitle 
   } from 'reactstrap'
 
-  import {deleteMoe} from '../actions'
+  import { deleteMoe } from '../actions'
 
 function Profil() {
     const dispatch = useDispatch()

@@ -19,8 +19,8 @@ export default (state = initialState, action) => {
             return { ...state, attempting: true, produits: action.payload }
 
         case GET_ALL_PRODUITS_FAILED:
-            return {...state, attempting: false}
-    
+            return { ...state, attempting: false }
+        
         default:
             return state
     }
