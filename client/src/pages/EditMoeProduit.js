@@ -51,6 +51,8 @@ const EditMoeProduit = () => {
 
     return (
       <div>
+            <h3>Modifier produit</h3>
+            <hr/>
             <Formik
                 initialValues= {{
                     nom,

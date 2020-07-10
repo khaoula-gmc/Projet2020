@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
     Card, 
     CardText,
@@ -8,7 +8,7 @@ import {
   import { Link } from 'react-router-dom'
   import {useDispatch, useSelector} from 'react-redux'
 
-  import { deleteProduit } from '../actions'
+  import { deleteProduit, getProduit } from '../actions'
 
 const MoeProduitCard = ({ el }) => {
     const dispatch = useDispatch()
@@ -16,11 +16,14 @@ const MoeProduitCard = ({ el }) => {
 
     const onDelete = () => {
         if(window.confirm("Voulez-vous vraiment supprimer ce produit?")) {
-            const produitId = moeProduits.moeProduits._id
-            console.log(moeProduits.moeProduits)
-            dispatch((deleteProduit(produitId)))
+            const produitId = el._id
+            dispatch(deleteProduit(produitId))
         } 
     }
+    
+    useEffect(() => {
+        dispatch(getProduit())
+    }, [])
 
     return (
         <div>
