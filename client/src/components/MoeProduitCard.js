@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import {
     Card, 
     CardText,
@@ -6,25 +6,21 @@ import {
     CardTitle,
   } from 'reactstrap';
   import { Link } from 'react-router-dom'
-  import {useDispatch, useSelector} from 'react-redux'
+  import { useDispatch } from 'react-redux'
 
   import { deleteProduit, getProduit } from '../actions'
 
 const MoeProduitCard = ({ el }) => {
     const dispatch = useDispatch()
-    const moeProduits = useSelector(state => state.moeProduits)
 
     const onDelete = () => {
         if(window.confirm("Voulez-vous vraiment supprimer ce produit?")) {
             const produitId = el._id
             dispatch(deleteProduit(produitId))
+            dispatch(getProduit())
         } 
     }
     
-    useEffect(() => {
-        dispatch(getProduit())
-    }, [])
-
     return (
         <div>
             <Card className="card-MoeCard" >

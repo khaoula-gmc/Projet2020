@@ -34,8 +34,8 @@ import {
     return async dispatch => {
       try {
         dispatch(clearErrors());
-        await apiUpdateProduit(produit);
         dispatch({ type: UPDATE_PRODUIT });
+        await apiUpdateProduit(produit);
       } catch (err) {
         dispatch(addError(err));
       }
@@ -61,6 +61,7 @@ import {
         dispatch(clearErrors());
         dispatch({ type: DELETE_PRODUIT })
         await apiDeleteProduit(_id);
+        dispatch(getProduit())
       } catch (err) {
         dispatch(addError(err));
       }
