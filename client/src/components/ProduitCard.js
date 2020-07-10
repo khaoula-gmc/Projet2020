@@ -6,8 +6,6 @@ import {
     CardTitle
   } from 'reactstrap';
 
-
-
 const ProduitCard = ({ el }) => {
     return (
         <div>

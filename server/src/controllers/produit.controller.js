@@ -19,15 +19,15 @@ produitController.getAll = async (req, res, next) => {
 produitController.get = async (req, res, next) => {
     const { moe } = req;
 
-    const id = {
+    const _id = {
         owner: moe._id
     }
 
     try {
-        const produits = await Produit.find(id);
+        const moeProduits = await Produit.find(_id);
         return res.send({
             message: `Produits de ${moe.prenom} ${moe.nom}`,
-            produits
+            moeProduits
         })
 
     } catch (err) {

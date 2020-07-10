@@ -13,7 +13,8 @@ import {
   EditMoe,  
   Profil, 
   MoeProduits, 
-  MoeServices
+  MoeServices,
+  EditMoeProduit
 } from './pages'
 import './App.css';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -34,6 +35,7 @@ function App() {
               <ProtectedRoute path='/profil' component={Profil} />
               <ProtectedRoute path='/mes-produits' component={MoeProduits} />
               <ProtectedRoute path='/mes-services' component={MoeServices} />
+              <ProtectedRoute path='/edit-mes-produits' component={EditMoeProduit} />
               <ProtectedRoute path='/edit-moe' component={EditMoe} />
           </Switch>
       </Container>

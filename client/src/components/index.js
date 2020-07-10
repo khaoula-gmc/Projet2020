@@ -6,3 +6,8 @@ export * from './MoeForm'
 export * from './ProduitCard'
 export * from './ServiceCard'
 export * from './Search'
+export * from './FloatButton'
+export * from './SaveProduit'
+export * from './MoeProduitCard'
+
+
