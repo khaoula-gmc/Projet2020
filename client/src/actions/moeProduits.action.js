@@ -61,6 +61,7 @@ import {
         dispatch(clearErrors());
         dispatch({ type: DELETE_PRODUIT })
         await apiDeleteProduit(_id);
+        dispatch(getProduit())
       } catch (err) {
         dispatch(addError(err));
       }
