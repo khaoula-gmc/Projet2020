@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { getAllMoes } from '../actions'
-import { MoeCard, Search } from '../components'
+import { getAllMoes } from '../../actions'
+import { MoeCard, Search } from '../../components'
+import { Button } from 'reactstrap';
 
 
 
-function Moes() {
+function AdminMoes() {
 
     const [inputOpen, setInputOpen] = useState("");
     const [inputValue, setInputValue] = useState("");
@@ -35,20 +36,30 @@ function Moes() {
     }
 
     return (
-        <div>
+        <div style={{backgroundColor: "black", padding: 3}}>
             <Search 
                 setInputOpen={setInputOpen} 
                 inputOpen={inputOpen} 
                 setInputValue={setInputValue} 
             />
             <hr/>
-            <div className="card-Container" >
-                {onSearch(moes.moes).map(el => (
-                    <MoeCard el={el} key={el._id} />   
+            <div className="card-Container">
+                {onSearch(moes.moes).map((el,i) => (
+                    <div key={el._id}>
+                        <MoeCard el={el} />   
+                        <Button 
+                            color="danger" 
+                            style={{
+                                position: "relative",
+                                bottom: "1.1em",
+                                left: "6em"
+                            }}>
+                        Suppprimer moe</Button>
+                    </div>
                 ))}
             </div>
         </div>
     )
 }
 
-export {Moes} 
+export {AdminMoes}

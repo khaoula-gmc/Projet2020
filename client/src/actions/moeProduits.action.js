@@ -22,8 +22,7 @@ import {
         dispatch(clearErrors());
         await apiAddProduit(produit);
         dispatch({ type: ADD_PRODUIT });
-        const { data: {moeProduits} } = await apiGetProduit(produit);
-        dispatch({ type: GET_MOE_PRODUIT_SUCCESS, payload: moeProduits });
+        dispatch(getProduit())
       } catch (err) {
         dispatch(addError(err));
       }
@@ -34,8 +33,8 @@ import {
     return async dispatch => {
       try {
         dispatch(clearErrors());
-        await apiUpdateProduit(produit);
         dispatch({ type: UPDATE_PRODUIT });
+        await apiUpdateProduit(produit);
       } catch (err) {
         dispatch(addError(err));
       }

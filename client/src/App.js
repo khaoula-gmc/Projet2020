@@ -1,6 +1,5 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import { Container } from 'reactstrap'
 
 import { NavBar } from './components'
 import {
@@ -16,15 +15,15 @@ import {
   MoeServices,
   EditMoeProduit,
   EditMoeService
-  
 } from './pages'
-import './App.css';
-import ProtectedRoute from './components/ProtectedRoute';
+import './App.css'
+import ProtectedRoute from './components/ProtectedRoute'
+import ProtectedRouteAdmin from './components/ProtectedRouteAdmin'
+import { AdminProduits, AdminServices, AdminMoes, AdminLogin, Admin } from './pages/Admin'
 
 function App() {
   return (
     <div className="App">
-      <Container>
           <NavBar/>
           <Route path='/' component={Home} exact />
           <Route path='/signup' component={SignUp} />
@@ -32,6 +31,14 @@ function App() {
           <Route path='/moe' component={Moes} />
           <Route path='/produits' component={Produits} />
           <Route path='/services' component={Services} />
+          <Route path='/admin-login' component={AdminLogin} />
+
+          <Switch>
+            <ProtectedRouteAdmin path='/admin' component={Admin} />
+            <ProtectedRouteAdmin path='/admin-moes' component={AdminMoes} />
+            <ProtectedRouteAdmin path='/admin-produits' component={AdminProduits} />
+            <ProtectedRouteAdmin path='/admin-services' component={AdminServices} />
+          </Switch>
 
           <Switch>
               <ProtectedRoute path='/profil' component={Profil} />
@@ -41,7 +48,6 @@ function App() {
               <ProtectedRoute path='/edit-mes-services' component={EditMoeService} />
               <ProtectedRoute path='/edit-moe' component={EditMoe} />
           </Switch>
-      </Container>
     </div>
   );
 }

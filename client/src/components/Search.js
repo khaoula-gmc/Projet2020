@@ -18,10 +18,8 @@ const Search = ({ setInputOpen, inputOpen, setInputValue }) => {
     const inputToggle = (e) => setInputOpen(e.target.value)
     
   return (
-      <div className='search-container'>
-        
-        <InputGroup>
-        
+      <div className='search-container'>   
+        <InputGroup className="pl-2">
             <InputGroupAddon addonType="append">
                 <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
                     <Button id="caret" color="primary">

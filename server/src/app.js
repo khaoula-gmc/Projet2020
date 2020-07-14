@@ -11,7 +11,7 @@ const adminRoutes = require("./routes/admin-routes")
 const app = express();
 
 // DB config
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,

@@ -11,14 +11,14 @@ import {
 const MoeCard = ({ el }) => {
     return (
         <div>
-            <Card className="card-MoeCard" >
+            <Card className="card-MoeCard border-success" >
                 <CardBody>
                     <CardTitle><span>Société:</span> {el.nom_societe} </CardTitle>
                     <CardText><span>Nom:</span> {el.nom} {el.prenom} </CardText>
                 </CardBody>
                 {<img
                     className="image-MoeCard" 
-                    src="https://cutt.ly/ro9aWyC"
+                    src="https://cutt.ly/YpAbDna"
                     alt="No img profile" 
                 />}
                 <CardBody>

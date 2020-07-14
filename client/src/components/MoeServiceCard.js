@@ -1,18 +1,17 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import {
     Card, 
     CardText,
     CardBody, 
     CardTitle,
   } from 'reactstrap';
-  import { Link } from 'react-router-dom'
-  import {useDispatch, useSelector} from 'react-redux'
+import { Link } from 'react-router-dom'
+import {useDispatch } from 'react-redux'
 
-  import { deleteService, getService } from '../actions'
+import { deleteService } from '../actions'
 
 const MoeServiceCard = ({ el }) => {
     const dispatch = useDispatch()
-    const moeServices = useSelector(state => state.moeServices)
 
     const onDelete = () => {
         if(window.confirm("Voulez-vous vraiment supprimer ce service?")) {
@@ -20,16 +19,12 @@ const MoeServiceCard = ({ el }) => {
             dispatch(deleteService(serviceId))
         } 
     }
-    
-    useEffect(() => {
-        dispatch(getService())
-    }, [])
 
     return (
         <div>
-            <Card className="card-MoeCard" >
+            <Card className="card-MoeCard border-info" >
                 <CardBody>
-                    <CardTitle><span>Nom: </span> {el.nom} </CardTitle>
+                    <CardTitle><span>Nom: </span> { el.nom } </CardTitle>
                 </CardBody>
                 {<img
                     className="image-MoeCard" 
@@ -37,15 +32,16 @@ const MoeServiceCard = ({ el }) => {
                     alt="No img profile" 
                 />}
                 <CardBody>
-                    <CardText><span>Type: </span> {el.type}</CardText>
-                    <CardText><span>Description: </span> {el.description} </CardText>
+                    <CardText><span>Type: </span> { el.type }</CardText>
+                    <CardText><span>Description: </span> { el.description } </CardText>
+                    <CardText><span>Date d'ajout: </span> {el.date_ajout} </CardText>
                     <Link 
                         to={{ pathname: "/edit-mes-services", state: {el} }}
-                        className="btn btn-secondary btn-sm m-1"
+                        className="btn btn-primary btn-sm m-1"
                     >Modifier service</Link>
                     <Link 
                         to="#" onClick={onDelete} 
-                        className="btn btn-secondary btn-sm m-1"
+                        className="btn btn-danger btn-sm m-1"
                     >Supprimer service</Link>
                 </CardBody>
             </Card>

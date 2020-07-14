@@ -13,29 +13,28 @@ function Home() {
     useEffect(() => {
         dispatch(getAllMoes());
         dispatch(getAllServices());
-        dispatch(getAllProduits());
-        
+        dispatch(getAllProduits());      
     }, [])
     
     return (
-        <div>
-            <h3>MOES</h3>
+        <div style={{marginTop: 20}}>
+            <h3 style={{color: "#28a745"}}>MOES</h3>
             <hr/>
-            <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
+            <div className="card-Container">
                 {(moes.moes).slice(0,3).map(el => (
                 <MoeCard el={el} key={el._id} /> 
                 ))}
             </div>
-            <h3>Produits</h3>
+            <h3 style={{color: "#ffc107"}}>Produits</h3>
             <hr/>
-            <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
+            <div className="card-Container">
                 {(produits.produits).slice(0,3).map(el => (
                 <ProduitCard style={{size:'50%'}} el={el} key={el._id} />   
                 ))}  
             </div>
-            <h3>Services</h3>
+            <h3 style={{color: "#17a2b8"}}>Services</h3>
             <hr/>
-            <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
+            <div className="card-Container">
                 {(services.services).slice(0,3).map(el => (
                 <ServiceCard el={el} key={el._id} />
                 ))}  

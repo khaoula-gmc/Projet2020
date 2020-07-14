@@ -9,7 +9,7 @@ import {
 const ProduitCard = ({ el }) => {
     return (
         <div>
-            <Card className="card-MoeCard" >
+            <Card className="card-MoeCard border-warning" >
                 <CardBody>
                     <CardTitle><span>Nom</span> {el.nom} </CardTitle>
                 </CardBody>

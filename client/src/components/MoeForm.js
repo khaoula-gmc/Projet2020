@@ -17,7 +17,7 @@ const  MoeForm = ({buttonText = "", onSubmit, moe = {}, error, titleText = ""}) 
         description = ""
     } = moe
     return (
-        <div style={{padding:20}}>
+        <div className="form">
            <h3>{titleText}</h3> 
            <hr/>
 

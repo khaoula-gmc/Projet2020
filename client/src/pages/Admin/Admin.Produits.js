@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector,useDispatch } from 'react-redux'
+import { Button } from 'reactstrap';
 
-import { getAllProduits } from '../actions'
-import { ProduitCard, Search } from '../components'
+import { getAllProduits } from '../../actions'
+import { ProduitCard, Search } from '../../components'
 
 
 
-function Produits() {
+function AdminProduits() {
     const [inputOpen, setInputOpen] = useState("");
     const [inputValue, setInputValue] = useState("");
     
@@ -35,7 +36,7 @@ function Produits() {
     }
 
     return (
-        <div>
+        <div style={{backgroundColor: "black", padding: 3}}>
             <Search 
                 setInputOpen={setInputOpen} 
                 inputOpen={inputOpen} 
@@ -44,11 +45,21 @@ function Produits() {
             <hr/>
             <div className="card-Container" >
                 {onSearch(produits.produits).map(el => (
-                    <ProduitCard el={el} key={el._id} />   
+                    <div key={el._id}>
+                        <ProduitCard el={el} />
+                        <Button 
+                            color="danger" 
+                            style={{
+                                position: "relative",
+                                bottom: "1.1em",
+                                left: "5.4em"
+                            }}>
+                        Suppprimer produit</Button>
+                    </div>   
                 ))}
             </div>
         </div>
     )
 }
 
-export {Produits} 
+export {AdminProduits} 

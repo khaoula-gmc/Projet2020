@@ -45,7 +45,7 @@ produitController.create = async (req, res, next) => {
         description,
         prix,
         photo,
-        date_ajout
+        date_ajout,
     } = req.body;
 
     const newProduit = new Produit({
@@ -105,7 +105,8 @@ produitController.update = async (req, res, next) => {
 
         const produitUpdated = await Produit.findOneAndUpdate(
             { _id }, 
-            { $set: req.body }
+            { $set: req.body },
+            { new: true }
         )
         return res.send({
             message: "Produit modifié",
