@@ -4,7 +4,6 @@ const logger = require('morgan');
 const bodyParser = require('body-parser')
 const passport = require('passport');
 const cors = require('cors');
-const path = require('path');
 
 const routes = require("./routes/routes");
 
@@ -38,13 +37,6 @@ require('./config/passport')(passport);
 // Routes
 app.use("/api/routes", routes);
 
-// Static files
-if(process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../../client/build')))
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, '../../client', 'build', 'index.html'))
-    })
-}
 // Errors
 app.use((req, res, next) => {
     res.status(404).send({
