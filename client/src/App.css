@@ -1,23 +1,52 @@
+/* APP */
+
+.App {
+  padding: 0px 6px;
+}
+
+/* Nav-bar */
+
+.nav-bar {
+  position: sticky;
+  top: 0px;
+  z-index: 4;
+}
+
 /* span */
 
 span {
     font-weight: 800;
 }
 
+/* em */
+
+em{
+  font-style: normal;
+  color: white;
+}
+
+/* Card container */
+
+.card-Container{
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center;
+}
+
 /* MOE-Card */
 
 .card-MoeCard {
+    padding: 5px; 
     margin: 20px;
-    width: 16em; 
+    width: 300px;
     text-align: center;
 }
 
 .image-MoeCard {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 8em;
-    height: 9em;
+    margin: 0 auto 0 auto;
+    width: 100px;
+    height: 100px;
 }
 
 /* Profile moe*/
@@ -33,39 +62,82 @@ span {
 /* Search */
 
 .search-container {
-    margin: 40px 0px;
-    display: flex;
-    justify-content: center;
-  }
-  .search-container input {
-    width: 60%;
-    border-radius: 25px;
-    border: 1px solid rgb(0, 123, 255);
-    color: grey;
-    padding: 8px 0 8px 10px;
-    margin-right: 10px;
-  }
-  .search-container input:focus {
-    outline: 0;
+  margin: 20px 0px;
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 60px;
+  z-index: 3;
   }
 
-  /* float button */
+.search-container input {
+  width: 60%;
+  border-radius: 25px;
+  border: 1px solid rgb(0, 123, 255);
+  color: grey;
+  padding: 8px 0 8px 10px;
+  margin-right: 10px;
+}
 
-  .float-button{
-    position: fixed;
-    bottom: 40px;
-    right: 40px;
-    cursor: pointer;
-  }
+.search-container input:focus {
+  outline: 0;
+}
+
+/* float button */
+
+.float-button{
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  cursor: pointer;
+}
  
-  .container-floatButton{
-    border-radius: 50px;
-    width: 60px;
-    height: 60px;
-    background: rgb(0, 123, 255);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    box-shadow: 2px 2px 3px grey;
-  }
+.container-floatButton{
+  border-radius: 50px;
+  width: 60px;
+  height: 60px;
+  background: rgb(0, 123, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  box-shadow: 2px 2px 3px grey;
+}
+
+ /* Form */
+
+.form {
+  width: 60%;
+  margin: 2% 20%;
+  padding: 20px;
+} 
+
+/* Admin */
+
+.admin {
+  font-size: 1000;
+  font-weight: bolder;
+  padding: 5px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.admin-container h1 {
+  color: white;
+  text-align: center;
+}
+
+.admin-container {
+  background-color: black;
+}
+
+/* DropdownItem */
+
+.DropdownItem {
+  padding: 3px;
+}
+
+.deconnection {
+  margin: 10px;
+  width: 150px;
+}

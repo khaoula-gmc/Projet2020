@@ -23,10 +23,10 @@ function Profil() {
    
     return (
         <div className="card-Profile">
-           <Card style={{padding: 10}}>
+           <Card style={{padding: 10}} className="border-success">
                 {<img
                     className="image-MoeCard" 
-                    src="https://cutt.ly/ro9aWyC"
+                    src="https://cutt.ly/YpAbDna"
                     alt="No img profile" 
                 />}
                 <CardBody>

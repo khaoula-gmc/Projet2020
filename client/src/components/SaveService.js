@@ -26,7 +26,7 @@ const SaveService = () => {
     const history = useHistory();
 
     if(moeServices.isAdd){
-        history.push('/moe-services')
+        history.push('/mes-services')
         dispatch(clearService())
     }
 
@@ -103,10 +103,10 @@ const SaveService = () => {
                                     value = {values.type}
                                 >
                                     <option></option>
-                                    <option>Porte</option>
-                                    <option>Fenetre</option>
-                                    <option>Outils</option>
-                                    <option>Carelage</option>
+                                    <option>Electricité</option>
+                                    <option>Plomberie</option>
+                                    <option>Design d'interieur</option>
+                                    <option>Nettoyage</option>
                                     <option>Autre</option>
                                 </Input>
                                 {errors.type && touched.type ? <FormFeedback>{errors.type}</FormFeedback> : null}

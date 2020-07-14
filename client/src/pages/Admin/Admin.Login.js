@@ -1,14 +1,14 @@
 import React from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, FormGroup, Label, Input, FormFeedback, Alert } from 'reactstrap'
 
 import * as Yup from 'yup'
 import { Formik } from 'formik'
 
-import { signIn } from '../actions'
+import { signIn } from '../../actions'
 
-function Login() {
+const AdminLogin = () => {
     const dispatch = useDispatch();
     const auth = useSelector(state => state.auth);
     let history = useHistory();
@@ -19,7 +19,7 @@ function Login() {
     };
     
     if(auth.isAuth) {
-        history.push("/")
+        history.push("/admin")
     }
 
     const errorLogin = () => {
@@ -28,8 +28,10 @@ function Login() {
     }
 
     return (
-        <div className="form">
-            <h3><i class="fas fa-sign-in-alt" style={{color: "rgb(0, 123, 255)"}} /> Se connecter</h3> 
+        <div className="form" style={{backgroundColor: "black"}}>
+            <h3 style={{color: "white"}}>
+                <i class="fas fa-users-cog" style={{color: "rgb(0, 123, 255)"}} /> Connection Admin
+            </h3> 
             <hr/>
 
             {errorLogin()}
@@ -59,7 +61,7 @@ function Login() {
                     }) => (
                         <div>
                             <FormGroup>
-                                <Label for = "Email">E-mail</Label>
+                                <Label for = "Email"><em>E-mail</em></Label>
                                 <Input 
                                     valid = {!isValid.email && touched.email}
                                     type = "email" 
@@ -74,7 +76,7 @@ function Login() {
                             </FormGroup>
 
                             <FormGroup>
-                                <Label for = "Password">Password</Label>
+                                <Label for = "Password"><em>Password</em></Label>
                                 <Input 
                                     valid = {!isValid.password && touched.password}
                                     type = "password" 
@@ -92,10 +94,8 @@ function Login() {
                         </div>
                     )}
                 </Formik>
-
-            <Link to="/signup"> Pas de Compte? Créer un compte maintenant</Link>
         </div>
     )
 }
 
-export {Login}
+export {AdminLogin}

@@ -18,7 +18,7 @@ const MoeProduits = () => {
     return (
         <div>
             <SaveProduit />
-            <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}} >
+            <div className="card-Container" >
                 {moeProduits.moeProduits.map(el => (
                     <MoeProduitCard el={el} key={el._id} />   
                 ))}

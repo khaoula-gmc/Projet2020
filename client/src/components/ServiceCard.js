@@ -11,7 +11,7 @@ import {
 const ServiceCard = ({ el }) => {
     return (
         <div>
-            <Card className="card-MoeCard" >
+            <Card className="card-MoeCard border-info" >
                 <CardBody>
                     <CardTitle><span>Nom</span> {el.nom} </CardTitle>
                 </CardBody>

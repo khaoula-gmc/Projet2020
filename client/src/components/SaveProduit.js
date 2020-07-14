@@ -26,12 +26,14 @@ const SaveProduit = () => {
     const history = useHistory();
 
     if(moeProduits.isAdd){
-        history.push('/moe-produits')
+        history.push('/mes-produits')
         dispatch(clearProduit())
     }
 
+    
+    
     const toggle = () => setModal(!modal);
-
+    
     const handleFormSubmit = (values, bag) => {
         dispatch(addProduit(values));
         toggle();

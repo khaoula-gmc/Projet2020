@@ -16,14 +16,13 @@ import {
     apiGetService
 } from '../api/moeServices.api';
   
-  export const addService = moeService => {
+  export const addService = service => {
     return async dispatch => {
       try {
         dispatch(clearErrors());
-        await apiAddService(moeService);
+        await apiAddService(service);
         dispatch({ type: ADD_SERVICE });
-        const { data: {service} } = await apiGetService(moeService);
-        dispatch({ type: GET_MOE_SERVICE_SUCCESS, payload: service });
+        dispatch(getService())
       } catch (err) {
         dispatch(addError(err));
       }
@@ -46,8 +45,8 @@ import {
     return async dispatch => {
       try {
         dispatch({ type: GETTING_MOE_SERVICE });
-        const { data: {services} } = await apiGetService(service);
-        dispatch({ type: GET_MOE_SERVICE_SUCCESS, payload: services });
+        const { data: {moeServices} } = await apiGetService(service);
+        dispatch({ type: GET_MOE_SERVICE_SUCCESS, payload: moeServices });
       } catch (err) {
         dispatch({ type: GET_MOE_SERVICE_FAILED });
         dispatch(addError(err));

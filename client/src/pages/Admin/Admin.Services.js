@@ -1,11 +1,11 @@
 import React, { useState ,useEffect } from 'react'
-
 import { useDispatch ,useSelector } from 'react-redux'
+import { Button } from 'reactstrap';
 
-import { getAllServices } from '../actions'
-import { ServiceCard, Search } from '../components'
+import { getAllServices } from '../../actions'
+import { ServiceCard, Search } from '../../components'
 
-function Services() {
+function AdminServices() {
     const [inputOpen, setInputOpen] = useState("");
     const [inputValue, setInputValue] = useState("");
 
@@ -34,7 +34,7 @@ function Services() {
     }
 
     return (
-        <div>
+        <div style={{backgroundColor: "black", padding: 3}}>
             <Search 
                 setInputOpen={setInputOpen} 
                 inputOpen={inputOpen} 
@@ -43,11 +43,21 @@ function Services() {
             <hr/>
             <div className="card-Container" >
                 {onSearch(services.services).map(el => (
-                    <ServiceCard el={el} key={el._id} />
+                    <div key={el._id}>
+                        <ServiceCard el={el} />
+                        <Button 
+                            color="danger" 
+                            style={{
+                                position: "relative",
+                                bottom: "1.1em",
+                                left: "5.4em"
+                            }}>
+                        Suppprimer service</Button>
+                    </div>
                 ))}
             </div>
         </div>
     )
 }
 
-export {Services} 
+export {AdminServices} 

@@ -24,10 +24,10 @@ serviceController.get = async (req, res, next) => {
     }
 
     try {
-        const services = await Service.find(id);
+        const moeServices = await Service.find(id);
         return res.send({
             message: `Services de ${moe.prenom} ${moe.nom}`,
-            services
+            moeServices
         })
 
     } catch (err) {
@@ -43,12 +43,14 @@ serviceController.create = async (req, res, next) => {
         nom,
         type,
         description,
+        date_ajout,
     } = req.body;
 
     const newService = new Service({
         nom,
         type,
         description,
+        date_ajout,
         owner: moe
     }); 
 
@@ -99,7 +101,8 @@ serviceController.update = async (req, res, next) => {
 
         const serviceUpdated = await Service.findOneAndUpdate(
             { _id }, 
-            { $set: req.body }
+            { $set: req.body },
+            { new: true }
         )
         return res.send({
             message: "Service modifié",
