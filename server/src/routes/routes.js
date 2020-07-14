@@ -5,6 +5,7 @@ const router = express.Router();
 const moeController = require("../controllers/moe.controller");
 const produitController = require("../controllers/produit.controller");
 const serviceController = require("../controllers/service.controller");
+const activiteController = require("../controllers/activite.controller")
 
 // Auth and register
 router.post('/register', moeController.register);
@@ -12,6 +13,9 @@ router.post('/login', moeController.login);
 router.get('/moe', moeController.get);
 router.get('/produits',produitController.getAll)
 router.get('/services',serviceController.getAll)
+
+
+
 
 // Customize and protect the routes
 router.all('*', (req, res, next) => {
@@ -21,7 +25,7 @@ router.all('*', (req, res, next) => {
             error.status = 401;
             throw error;
         }
-
+        
         req.moe = moe;
         return next();
     })(req, res, next);
@@ -41,6 +45,9 @@ router.get('/produit', produitController.get);
 router.post('/produit', produitController.create);
 router.put('/produit/:_id', produitController.update);
 router.delete('/produit/:_id', produitController.delete);
+
+router.get('/activite', activiteController.get);
+
 
 
 

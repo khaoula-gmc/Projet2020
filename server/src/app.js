@@ -6,6 +6,7 @@ const passport = require('passport');
 const cors = require('cors');
 
 const routes = require("./routes/routes");
+const adminRoutes = require("./routes/admin-routes")
 
 const app = express();
 
@@ -33,9 +34,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(passport.initialize());
 app.use(passport.session());
 require('./config/passport')(passport);
+require('./config/passportAdmin')(passport);
 
 // Routes
 app.use("/api/routes", routes);
+app.use("/api/admin-routes", adminRoutes);
 
 // Errors
 app.use((req, res, next) => {

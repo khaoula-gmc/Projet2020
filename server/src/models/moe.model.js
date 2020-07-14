@@ -11,7 +11,10 @@ const moeSchema = Schema({
   nom_societe: { type: String, required: true },
   adresse: { type: String, required: true },
   telephone: { type: Number, required: true },
-  activite: { type: String, required: true },
+  activite: { 
+    type: mongoose.Schema.Types.ObjectId,
+    ref:'Activite',
+    required: true },
   description: { type: String },
   date_inscription: { type: Date, default: new Date() }
 });
