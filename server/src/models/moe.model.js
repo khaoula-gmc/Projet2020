@@ -12,7 +12,7 @@ const moeSchema = Schema({
   adresse: { type: String, required: true },
   telephone: { type: Number, required: true },
   activite: { 
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.String,
     ref:'Activite',
     required: true 
   },

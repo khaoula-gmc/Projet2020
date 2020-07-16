@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const serviceSchema = Schema({
   nom: { type: String, required: true},
   type: { 
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.String,
     ref: 'TypeService',
     required: true
   },

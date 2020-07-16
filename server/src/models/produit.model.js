@@ -14,7 +14,7 @@ const produitSchema = Schema({
   photo: { type: String },
   date_ajout: { type: Date, default: new Date() },
   owner: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.String,
     ref: 'Moe'
   }
 });
