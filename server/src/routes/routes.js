@@ -10,6 +10,10 @@ const activiteMoeController = require("../controllers/activiteMoe.controller")
 const typeProduitController = require("../controllers/typeProduit.controller")
 const typeServiceController = require("../controllers/typeService.controller")
 
+
+
+
+
 // Auth and register
 router.post('/register', moeController.register);
 router.post('/login', moeController.login);

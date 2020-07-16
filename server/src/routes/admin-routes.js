@@ -8,6 +8,9 @@ const typeProduitController = require("../controllers/typeProduit.controller")
 const typeServiceController = require("../controllers/typeService.controller")
 
 
+
+
+
 // Auth and register
 router.post('/register', adminController.register);
 router.post('/admin-login', adminController.login);
