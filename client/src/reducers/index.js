@@ -1,12 +1,16 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 
-import auth from '../reducers/auth.reducer'
-import moes from '../reducers/moe.reducer'
-import errors from '../reducers/errors.reducer'
-import produits from '../reducers/produits.reducer'
-import services from '../reducers/services.reducer'
-import moeProduits from '../reducers/moeProduit.reducer'
-import moeServices from '../reducers/moeService.reducer'
+import auth from './auth.reducer'
+import moes from './moe.reducer'
+import errors from './errors.reducer'
+import produits from './produits.reducer'
+import services from './services.reducer'
+import moeProduits from './moeProduit.reducer'
+import moeServices from './moeService.reducer'
+import admin from './admin.reducer'
+import activitesMoe from './activitesMoe.reducer'
+import typesProduits from './typesProduits.reducer'
+import typesServices from './typesServices.reducer'
 
 export default combineReducers({
     auth,
@@ -15,5 +19,9 @@ export default combineReducers({
     produits, 
     services, 
     moeProduits, 
-    moeServices
+    moeServices,
+    admin,
+    activitesMoe,
+    typesProduits,
+    typesServices
 });

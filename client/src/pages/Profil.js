@@ -38,11 +38,11 @@ function Profil() {
                     <CardText><span>Description:</span> {auth.profile.description}</CardText>
                     <Link 
                         to={{ pathname: "/edit-moe", state: {...auth.profile} }}
-                        className="btn btn-secondary btn-sm m-1"
+                        className="btn btn-primary btn-sm m-1"
                     >Modifier profil</Link>
                     <Link 
                         to="#" onClick={onDelete} 
-                        className="btn btn-secondary btn-sm m-1"
+                        className="btn btn-danger btn-sm m-1"
                     >Se désinscrire</Link>
                 </CardBody>
             </Card>

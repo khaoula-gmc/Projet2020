@@ -29,9 +29,7 @@ const SaveProduit = () => {
         history.push('/mes-produits')
         dispatch(clearProduit())
     }
-
-    
-    
+ 
     const toggle = () => setModal(!modal);
     
     const handleFormSubmit = (values, bag) => {

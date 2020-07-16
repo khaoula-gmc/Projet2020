@@ -5,9 +5,9 @@ const typeServiceController = {};
 // Get all types 
 typeServiceController.get = async (req, res, next) => {
     try {
-        const typeService = await  TypeService.find();
+        const typesServices = await  TypeService.find();
         return res.send({
-            typeService
+            typesServices
         })
 
     } catch (err) {

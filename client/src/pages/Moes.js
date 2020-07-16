@@ -21,7 +21,8 @@ function Moes() {
         switch(inputOpen) {
             case "Nom":
                 return toSearch.filter(el => (
-                    el.nom.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1
+                    el.nom.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1 ||
+                    el.prenom.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1
                 )) 
 
             case "Type":

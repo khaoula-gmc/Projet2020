@@ -14,7 +14,8 @@ const moeSchema = Schema({
   activite: { 
     type: mongoose.Schema.Types.ObjectId,
     ref:'Activite',
-    required: true },
+    required: true 
+  },
   description: { type: String },
   date_inscription: { type: Date, default: new Date() }
 });

@@ -6,31 +6,31 @@ import { Button, FormGroup, Label, Input, FormFeedback, Alert } from 'reactstrap
 import * as Yup from 'yup'
 import { Formik } from 'formik'
 
-import { signIn } from '../../actions'
+import { signInAdmin } from '../../actions'
 
 const AdminLogin = () => {
     const dispatch = useDispatch();
-    const auth = useSelector(state => state.auth);
+    const admin = useSelector(state => state.admin);
     let history = useHistory();
 
-    const handleFormSubmit = (values, bag) => {
-        dispatch(signIn(values));
-        bag.setSubmitting(false);
-    };
-    
-    if(auth.isAuth) {
-        history.push("/admin")
+    if(admin.isAuth) {
+        history.push("/admin-control")
     }
 
+    const handleFormSubmit = (values, bag) => {
+        dispatch(signInAdmin(values));
+        bag.setSubmitting(false);
+    };
+
     const errorLogin = () => {
-        if(auth.error)
-            return <Alert color="danger">{auth.error}</Alert>
+        if(admin.error)
+            return <Alert color="danger">{admin.error}</Alert>
     }
 
     return (
-        <div className="form" style={{backgroundColor: "black"}}>
-            <h3 style={{color: "white"}}>
-                <i class="fas fa-users-cog" style={{color: "rgb(0, 123, 255)"}} /> Connection Admin
+        <div className="form">
+            <h3>
+                <i className="fas fa-users-cog" style={{color: "rgb(0, 123, 255)"}} /> Connection Admin
             </h3> 
             <hr/>
 

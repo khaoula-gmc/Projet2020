@@ -29,7 +29,7 @@ function Login() {
 
     return (
         <div className="form">
-            <h3><i class="fas fa-sign-in-alt" style={{color: "rgb(0, 123, 255)"}} /> Se connecter</h3> 
+            <h3><i className="fas fa-sign-in-alt" style={{color: "rgb(0, 123, 255)"}} /> Se connecter</h3> 
             <hr/>
 
             {errorLogin()}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import {
   Collapse,
@@ -15,6 +16,7 @@ import {
   DropdownItem
 } from 'reactstrap'
 import { loggedOut } from '../actions';
+import { loggedOutAdmin } from '../actions'
 
 
 
@@ -25,6 +27,7 @@ const NavBar = () => {
   const [dropDownOpenAdmin, setDropDownOpenAdmin] = useState(false);
   
   const auth = useSelector(state => state.auth)
+  const admin = useSelector(state => state.admin)
 
   const dispatch = useDispatch()
 
@@ -71,37 +74,44 @@ const NavBar = () => {
 
     return (
       <NavLink style={{color: '#fff'}} href="/login">
-        <i class="fas fa-sign-in-alt" /> Se connecter
+        <i className="fas fa-sign-in-alt" /> Se connecter
       </NavLink>
     )
   }
 
   const renderAdminLoginOrLgout = () => {
-    if(auth.isAuth) return(
+    if(admin.isAuth) return(
       <ButtonDropdown isOpen={dropDownOpenAdmin} toggle={toggleButtonAdmin}>
-        <DropdownToggle caret color="primary" size="sm" style={{height: 31, marginTop: 5}}>
-          <i className="fas fa-grin" /> Welcome Admin {auth.profile.nom}
+        <DropdownToggle caret color="danger" size="sm" style={{height: 31, marginTop: 5}}>
+          <i className="fas fa-grin" /> Welcome Admin
         </DropdownToggle>
-        <DropdownMenu size="sm">
-          <NavLink href="/admin-moes">
+        <DropdownMenu size="sm" className="bg-danger">
+        <Link to="/admin-control">
+            <DropdownItem className="DropdownItem">
+              <i className="fas fa-cog" /> Control
+            </DropdownItem>
+          </Link>
+          <Link to="/admin-moes">
             <DropdownItem className="DropdownItem">
               <i className="fas fa-user" /> Tous les moes
             </DropdownItem>
-          </NavLink>
-          <NavLink href="/admin-produits">
+          </Link>
+          <Link to="/admin-produits">
             <DropdownItem className="DropdownItem">
               <i className="fas fa-cube" /> Tous les produits
             </DropdownItem>
-          </NavLink>
-          <NavLink href="/admin-services">
+          </Link>
+          <Link to="/admin-services">
             <DropdownItem className="DropdownItem">
               <i className="fas fa-paint-roller" /> Tous les services
             </DropdownItem>
-          </NavLink>
+          </Link>
           <hr/>
-          <DropdownItem onClick={logOut} className="DropdownItem deconnection">
-            <i className="fas fa-sign-out-alt"/> Se deconnecter
-          </DropdownItem>
+          <NavLink href="/" style={{padding: 0}}>
+            <DropdownItem style={{padding: 0}} onClick={loggedOutAdmin} className="DropdownItem deconnection">
+              <i className="fas fa-sign-out-alt"/> Se deconnecter
+            </DropdownItem>
+          </NavLink>
         </DropdownMenu>
       </ButtonDropdown>
     )

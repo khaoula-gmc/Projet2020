@@ -36,7 +36,7 @@ function AdminProduits() {
     }
 
     return (
-        <div style={{backgroundColor: "black", padding: 3}}>
+        <div style={{padding: 3}}>
             <Search 
                 setInputOpen={setInputOpen} 
                 inputOpen={inputOpen} 
@@ -52,7 +52,7 @@ function AdminProduits() {
                             style={{
                                 position: "relative",
                                 bottom: "1.1em",
-                                left: "5.4em"
+                                left: "7.1em"
                             }}>
                         Suppprimer produit</Button>
                     </div>   

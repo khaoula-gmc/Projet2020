@@ -36,7 +36,7 @@ function AdminMoes() {
     }
 
     return (
-        <div style={{backgroundColor: "black", padding: 3}}>
+        <div style={{padding: 3}}>
             <Search 
                 setInputOpen={setInputOpen} 
                 inputOpen={inputOpen} 
@@ -52,7 +52,7 @@ function AdminMoes() {
                             style={{
                                 position: "relative",
                                 bottom: "1.1em",
-                                left: "6em"
+                                left: "7.6em"
                             }}>
                         Suppprimer moe</Button>
                     </div>

@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
 import App from './App'
 import store from './store'
-import { onLoading } from './actions/auth.action'
+import { onLoading } from './actions'
 
 store.dispatch(onLoading())
 

@@ -20,7 +20,7 @@ const success = (token) => {
 }
 
 const error = (err) => {
-    return { type: AUTH_FAILED, payload: err};
+    return { type: AUTH_FAILED, payload: err };
 }
 
 export const signUp = request_data => {
@@ -38,7 +38,7 @@ export const signUp = request_data => {
   };
 export const signIn = request_data => {
     return async dispatch => {
-        dispatch({ type: AUTH_ATTEMPTING});
+        dispatch({ type: AUTH_ATTEMPTING });
         try {
             const { data: { token } } = await apiLogin(request_data)
             setAuthHeader(token)

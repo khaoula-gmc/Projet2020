@@ -5,9 +5,9 @@ const typeProduitController = {};
 // Get all types 
 typeProduitController.get = async (req, res, next) => {
     try {
-        const typeProduit = await TypeProduit.find();
+        const typesProduits = await TypeProduit.find();
         return res.send({
-            typeProduit
+            typesProduits
         })
 
     } catch (err) {
@@ -27,10 +27,10 @@ typeProduitController.create = async (req, res, next) => {
     }); 
 
     try {
-        const typeProduit = await newTypeProduit.save();
+        const typesProduits = await newTypeProduit.save();
         return res.send({
             success: true,
-            type
+            typesProduits
         });
 
     } catch (err) {

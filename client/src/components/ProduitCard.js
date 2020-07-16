@@ -19,9 +19,10 @@ const ProduitCard = ({ el }) => {
                     alt="No img profile" 
                 />}
                 <CardBody>
-                    <CardText><span>Type:</span> {el.type}</CardText>
-                    <CardText><span>Description</span> {el.description} </CardText>
-                    <CardText><span>Date d'ajout</span> {el.date_ajout} </CardText>
+                    <CardText><span>Type: </span> {el.type}</CardText>
+                    <CardText><span>Prix: </span> {el.prix} TND</CardText>
+                    <CardText><span>Description: </span> {el.description} </CardText>
+                    <CardText><span>Date d'ajout: </span> {el.date_ajout} </CardText>
                 </CardBody>
             </Card>
         </div>

@@ -77,7 +77,7 @@ adminController.getAdmins = async(req, res, next) => {
 }
 
 //Get profile
-adminController.getProfile = async(req,res,next) => {
+adminController.getAdminProfile = async(req,res,next) => {
     const {admin} = req
     return res.send({ 
         admin

@@ -19,7 +19,7 @@ import {
 import './App.css'
 import ProtectedRoute from './components/ProtectedRoute'
 import ProtectedRouteAdmin from './components/ProtectedRouteAdmin'
-import { AdminProduits, AdminServices, AdminMoes, AdminLogin, Admin } from './pages/Admin'
+import { AdminProduits, AdminServices, AdminMoes, AdminLogin, AdminControl } from './pages/Admin'
 
 function App() {
   return (
@@ -34,7 +34,7 @@ function App() {
           <Route path='/admin-login' component={AdminLogin} />
 
           <Switch>
-            <ProtectedRouteAdmin path='/admin' component={Admin} />
+            <ProtectedRouteAdmin path='/admin-control' component={AdminControl} />
             <ProtectedRouteAdmin path='/admin-moes' component={AdminMoes} />
             <ProtectedRouteAdmin path='/admin-produits' component={AdminProduits} />
             <ProtectedRouteAdmin path='/admin-services' component={AdminServices} />

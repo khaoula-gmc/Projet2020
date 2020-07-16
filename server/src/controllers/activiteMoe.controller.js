@@ -1,9 +1,9 @@
-const Activite = require('../models/activite.model')
+const Activite = require('../models/activiteMoe.model')
 
-const activiteController = {};
+const activiteMoeController = {};
 
 // Get all activities
-activiteController.get = async (req, res, next) => {
+activiteMoeController.get = async (req, res, next) => {
     try {
         const activites = await Activite.find();
         return res.send({
@@ -15,10 +15,8 @@ activiteController.get = async (req, res, next) => {
     }
 }
 
-
-
 // Create activite
-activiteController.create = async (req, res, next) => {
+activiteMoeController.create = async (req, res, next) => {
     
     const { activite } = req.body;
 
@@ -27,10 +25,10 @@ activiteController.create = async (req, res, next) => {
     }); 
 
     try {
-        const activite = await newActivite.save();
+        const activiteMoe = await newActivite.save();
         return res.send({
             success: true,
-            activite
+            activiteMoe
         });
 
     } catch (err) {
@@ -39,7 +37,7 @@ activiteController.create = async (req, res, next) => {
 }
 
 // Delete activite
-activiteController.delete = async (req, res, next) => {
+activiteMoeController.delete = async (req, res, next) => {
   
     const { _id } = req.params;
 
@@ -54,7 +52,7 @@ activiteController.delete = async (req, res, next) => {
 }
 
 // Update activity
-activiteController.update = async (req, res, next) => {
+activiteMoeController.update = async (req, res, next) => {
     const { _id } = req.params;
    
     try {
@@ -71,4 +69,4 @@ activiteController.update = async (req, res, next) => {
     }
 }
 
-module.exports = activiteController;
+module.exports = activiteMoeController;

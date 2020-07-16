@@ -1,10 +1,19 @@
-import React from 'react'
-import {Formik} from 'formik'
-import {Link} from 'react-router-dom'
+import React, {useEffect} from 'react'
+import { Formik } from 'formik'
+import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import * as Yup from 'yup'
 import { Button, FormGroup, Label, Input, FormFeedback, Alert } from 'reactstrap'
+import { getActiviteMoe } from '../actions'
 
 const  MoeForm = ({buttonText = "", onSubmit, moe = {}, error, titleText = ""}) => {
+    const activitesMoe = useSelector(state => state.activitesMoe);
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+        dispatch(getActiviteMoe())
+    }, [])
+
     const { 
         nom = "", 
         prenom = "", 
@@ -196,11 +205,9 @@ const  MoeForm = ({buttonText = "", onSubmit, moe = {}, error, titleText = ""}) 
                                     value = {values.activite}
                                 >
                                     <option></option>
-                                    <option>Architecture</option>
-                                    <option>Entreprenariat</option>
-                                    <option>Menuiserie</option>
-                                    <option>Quincaillerie</option>
-                                    <option>Autre</option>
+                                    {activitesMoe.activitesMoe.map(el => (
+                                        <option key={el._id}>{el.activite}</option>
+                                    ))}
                                 </Input>
                                 {errors.activite && touched.activite ? <FormFeedback>{errors.activite}</FormFeedback> : null}
                             </FormGroup>
